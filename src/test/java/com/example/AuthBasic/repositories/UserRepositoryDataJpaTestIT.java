@@ -1,6 +1,5 @@
 package com.example.AuthBasic.repositories;
 
-import com.example.AuthBasic.entities.Role;
 import com.example.AuthBasic.entities.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +34,6 @@ public class UserRepositoryDataJpaTestIT {
                 .isEqualTo(user.getUsername());
 
 
-        b.getRoles().forEach( role -> {
-            assertThat(role.getName())
-                    .isEqualTo("ADMIN");
-            }
-        );
-
     }
     @Test
     public void whenFindByUsername_thenReturnUser(){
@@ -57,17 +50,10 @@ public class UserRepositoryDataJpaTestIT {
 
     private User createUser() {
         User user = new User();
-        Role role = new Role();
-
-        role.setName("ADMIN");
-        role.setDescription("admin role");
-        Set<Role> roleSet = new HashSet<>();
-        roleSet.add(role);
 
 
         user.setUsername("Adrian");
         user.setPassword("dexter");
-        user.setRoles( roleSet);
         return user;
     }
 }

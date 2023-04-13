@@ -27,7 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/helloWorld").hasRole("ADMIN")
                 .antMatchers("/api/hola").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
